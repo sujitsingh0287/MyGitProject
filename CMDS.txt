@@ -1,0 +1,54 @@
+$PSVersionTable.PSVersion
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+
+Connect-AzAccount
+
+Connect-AzAccount -TenantId 16bb53fa-03d5-4232-b62b-06d74aabc2f3
+
+
+
+Github Account sujitsingh0287
+Pass-MSazure!1234
+
+Resource Group Create
+New-AzResourceGroup -Name RG02 -Location "East US"
+
+New-AzResourceGroup -Name RG03 -Location "South Central US"
+
+New-AzResourceGroup -Name demoRG2 -Location "South Central US" -Tag @{Department="Sales"}
+New-AzResourceGroup -ResourceGroupName "myResourceGroupVM2" -Location "EastUS"
+
+VM Create
+
+$Cred = Get-Creadential
+Set Username and Credentials
+
+New-AzResourceGroup -ResourceGroupName "myResourceGroupVM2" -Location "EastUS"
+
+
+New-AzVm -ResourceGroupName "myResourceGroupVM2" -Name "SUJITVM2" -Location "EastUS" -VirtualNetworkName "myVnet2" -SubnetName "mySubnet2" -SecurityGroupName "myNetworkSecurityGroup2" -PublicIpAddressName "myPublicIpAddress2" -Credential $cread
+
+Get-AzPublicIpAddress -ResourceGroupName "myResourceGroupVM2"  | Select IpAddress
+
+
+
+mstsc /v:172.178.32.61
+
+Stop-AzVM -ResourceGroupName "myResourceGroupVM2" -Name "SUJITVM2"
+Restart-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+
+
+
+
+#Start Azure VMs 
+$ResourceGroupName = "myResourceGroupVM"
+Get-AzVM -ResourceGroupName $ResourceGroupName | Select Name | ForEach-Object { Start-AzVM -ResourceGroupName $myResourceGroupVM2 -Name $_.Name }
+ 
+#Stop Azure VMs 
+Get-AzVM -ResourceGroupName $ResourceGroupName | Select Name | ForEach-Object { Stop-AzVM -ResourceGroupName $ResourceGroupName -Name $_.Name }
+ 
+#Restart Azure VMs 
+Get-AzVM -ResourceGroupName $ResourceGroupName | Select Name | ForEach-Object { Restart-AzVM -ResourceGroupName $ResourceGroupName -Name $_.Name }
