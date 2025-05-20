@@ -1,0 +1,71 @@
+modules/resource_group/main.tf
+
+hcl
+Copy
+Edit
+resource "azurerm_resource_group" "this" {
+  name     = var.name
+  location = var.location
+}
+modules/resource_group/variables.tf
+
+hcl
+Copy
+Edit
+variable "name" {}
+variable "location" {}
+root module me:
+
+hcl
+Copy
+Edit
+module "rg" {
+  source   = "./modules/resource_group"
+  for_each = toset(["dev", "test", "prod"])
+  name     = "rg-${each.key}"
+  location = "East US"
+}
+🧠 Logic yaad rakhne ka shortcut:
+Module means reuse — aur jab repeat karna hai to count/for_each = dynamic creation.
+
+✅ 3. Daily Practice Plan (15-30 Min)
+Har din ek chhota use case utha le aur manually likh:
+
+Day	Task
+Day 1	Create 1 RG + 1 Storage Account
+Day 2	Add 1 VNet + 1 Subnet
+Day 3	Create 1 VM with NIC, NSG
+Day 4	Create 3 RGs using for_each
+Day 5	Create reusable RG module
+Day 6	Use that module to create 5 RGs
+Day 7	Mock Interview style code writing
+
+📁 Apne system me ek Terraform-Practice folder bana le. Har din ka task alag subfolder me rakh.
+
+✅ 4. Interview ke liye Tip
+Agar tera base clear hai to interview me confidently bol:
+
+"Mujhe Terraform syntax ka strong hold hai, aur main modules aur for_each dono regularly use karta hoon. Agar aap mujhe ek use case batayein to main bina copy ke code likh ke dikha sakta hoon."
+
+Fir tu basic RG + VNet + Subnet code confidently likh de — ye hi proof hota hai skill ka.
+
+✅ 5. Tools for Fast Practice
+Use Terraform Registry only for reference.
+
+VS Code + Terraform extension install kar le (auto-complete help karega).
+
+Use GitHub to store your practice and revisit.
+
+✅ Bonus: Practice Karne ke liye Ready Topics
+Create 3 RGs using module
+
+Create 2 VNets with 2 Subnets each
+
+Create 1 VM with NIC, Public IP, NSG
+
+Create module for VMs
+
+Add tags dynamically using map
+
+Output values from modules
+
