@@ -1,0 +1,8 @@
+Resource Type	Terraform Code Pattern
+Resource Group	resource "azurerm_resource_group" "rg" { ... }
+Virtual Network	resource "azurerm_virtual_network" "vnet" { ... }
+Subnet	resource "azurerm_subnet" "subnet" { ... }
+NIC	resource "azurerm_network_interface" "nic" { ... }
+NSG	resource "azurerm_network_security_group" "nsg" { ... }
+Storage Account	resource "azurerm_storage_account" "storage" { ... }
+Virtual Machine	resource "azurerm_windows_virtual_machine" "vm" { ... }
